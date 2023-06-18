@@ -7,6 +7,7 @@ import path from "path"
 import {errorHandler} from "./middlewares/error-handler.js"
 
 import connectDB from "./config/db.js"
+import user_router from "./routes/UserRoutes.js"
 
 dotenv.config({path: "./config/config.env"});
 connectDB().then()
@@ -18,7 +19,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use(errorHandler)
-
+app.use("/api/user", user_router)
 
 const PORT = process.env.PORT || 5000;
 app.listen(
