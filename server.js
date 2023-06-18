@@ -1,6 +1,5 @@
-import dotenv from "dotenv"
-dotenv.config({path: "./config/config.env"});
 import express from "express"
+import dotenv from "dotenv"
 import cors from "cors"
 import morgan from "morgan"
 import path from "path"
@@ -10,6 +9,7 @@ import {errorHandler} from "./middlewares/error-handler.js"
 import connectDB from "./config/db.js"
 import user_router from "./routes/UserRoutes.js"
 
+dotenv.config({path: "./config/config.env"});
 connectDB().then()
 
 const app = express()
