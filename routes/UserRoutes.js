@@ -7,6 +7,6 @@ const user_router = express.Router()
 user_router.route("/")
     .post(UserValidation.signup, user_signup)
 
-user_router.get("/in", UserValidation.signin, user_signin)
+user_router.post("/in", UserValidation.signin, user_signin)
 
 export default user_router
