@@ -22,7 +22,7 @@ export const signup = (req, res, next) => {
         // phoneNumber: Joi.string().trim(),
         // address: Joi.string().required().trim(),
         // age: Joi.string().required().trim(),
-        userType: Joi.string().valid('advertiser', 'affiliate')
+        // userType: Joi.string().valid('advertiser', 'affiliate')
       });
     validateRequest (req, next, schema)
 } 
