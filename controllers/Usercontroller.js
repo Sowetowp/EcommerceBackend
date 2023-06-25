@@ -28,7 +28,7 @@ export const user_signup = asyncHandler(async(req, res) => {
             })
         }else{
             res.status(400).json({
-                message:"user data not valid"
+                error:"user data not valid"
             })
         }
     }
