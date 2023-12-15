@@ -80,22 +80,23 @@ export const create_category = asyncHandler(async (req, res, next) => {
                 status: 'conflict',
                 data: null,
             });
-		}
-
-		const post = await Category.create({
-			name,
-		})
-
-		if (post) {
-			res.status(201).json({
-				message: 'success',
-				status: 'ok',
-				data: post, 
+		}else{
+			const post = await Category.create({
+				name,
 			})
-		} else {
-			res.status(400)
-			throw new Error('Something went wrong.')
+	
+			if (post) {
+				res.status(201).json({
+					message: 'success',
+					status: 'ok',
+					data: post, 
+				})
+			} else {
+				res.status(400)
+				throw new Error('Something went wrong.')
+			}
 		}
+
 	} catch (error) {
 		res.send({error: error})
 	}
