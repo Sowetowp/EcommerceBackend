@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs"
 import { generatetoken } from "../utilities/generate_token.js";
 import User from "../models/User.js";
+import Product from "../models/Product.js";
 
 export const user_signup = asyncHandler(async(req, res, next) => {
     try{
@@ -62,4 +63,22 @@ export const user_signin = asyncHandler(async(req, res, next) =>{
     } catch (error) {
         res.send({error: error})
     }
+})
+
+export const get_products = asyncHandler(async (req, res, next) => {
+	try{
+		const subject = await Product.find({})
+        .populate("category", "name")
+		if (subject) {
+			res.status(201).json({
+				message: 'success',
+				status: 'ok',
+				data: subject,
+			})
+		} else {
+			throw new Error('something went wrong')
+		}
+	} catch (error) {
+		res.send({error: error})
+	}
 })
